@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduGarden | Social Entrepreneurship for a Sustainable Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+Georgian:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #B24060;
+      --green: #9BCB94;
+      --white: #fff;
+      --shadow: 0 4px 24px rgba(178,64,96,0.08);
+      --radius: 18px;
+      --header-height: 72px;
+      --footer-bg: #222;
+      --font-en: 'Poppins', sans-serif;
+      --font-ge: 'Noto Sans Georgian', 'Nino Mtavruli', sans-serif;
+      --fade-in: fadeIn 0.8s cubic-bezier(.77,0,.175,1) both;
+      --slide-up: slideUp 0.7s cubic-bezier(.77,0,.175,1) both;
+      --scale-in: scaleIn 0.5s cubic-bezier(.77,0,.175,1) both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(2deg); }
+      66% { transform: translateY(-10px) rotate(-1deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+    }
+    html, body {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: var(--font-en);
+      background: linear-gradient(120deg, #fff 70%, #f8f8fa 100%);
+      color: #222;
+      min-height: 100vh;
+      animation: var(--fade-in);
+    }
+    body.georgian { font-family: var(--font-ge); }
+header {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--header-height);
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      border-bottom: 1px solid #eee;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px;
+      transition: box-shadow 0.2s;
+      animation: var(--slide-up);
+    }
+    .logo-square {
+      position: absolute;
+      top: 4px;
+      left: 24px;
+      height: 96px;
+      width: 96px;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px 0 rgba(178,64,96,0.18), 0 2px 24px 0 rgba(178,64,96,0.13);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.22s, transform 0.22s;
+      cursor: pointer;
+      z-index: 101;
+    }
+    .logo-square:hover {
+      box-shadow: 0 12px 48px 0 rgba(178,64,96,0.32), 0 2px 32px 0 rgba(178,64,96,0.22);
+      transform: scale(1.07);
+    }
+    .logo-square img {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      transition: transform 0.22s;
+      box-shadow: none;
+      background: none;
+      animation: var(--scale-in);
+      display: block;
+    }
+    nav {
+      flex: 1; display: flex; justify-content: flex-end; align-items: center;
+      gap: 32px;
+      margin-right: 16px;
+      background: none;
+      box-shadow: none;
+      border: none;
+    }
+    nav a {
+      font-weight: 600; color: var(--rose); text-decoration: none;
+      padding: 8px 16px; border-radius: var(--radius);
+      border: 1.5px solid rgba(178,64,96,0.13);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 2px 12px rgba(178,64,96,0.08);
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s, transform 0.13s;
+      cursor: pointer;
+      font-size: 1rem;
+      animation: var(--fade-in);
+      will-change: background, color, border, box-shadow, transform;
+    }
+    nav a.active, nav a:hover {
+      background: rgba(178,64,96,0.08);
+      color: var(--rose);
+      border: 1.5px solid var(--rose);
+      box-shadow: 0 4px 18px rgba(178,64,96,0.13);
+      text-decoration: none;
+      transform: scale(1.04);
+    }
+    .lang-switch {
+      display: flex; gap: 8px;
+      margin-left: 0;
+    }
+    .lang-btn {
+      font-weight: 700; font-size: 1rem;
+      background: var(--white); color: var(--rose);
+      border: 2px solid var(--rose); border-radius: var(--radius);
+      padding: 6px 18px; cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.3s;
+      animation: var(--fade-in);
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--rose); color: var(--white);
+      box-shadow: 0 2px 12px rgba(178,64,96,0.12);
+    }
+    main {
+      margin-top: var(--header-height);
+      min-height: calc(100vh - var(--header-height) - 120px);
+      width: 100%;
+      display: flex; flex-direction: column;
+      animation: var(--fade-in);
+    }
+    section {
+      width: 100%; max-width: 1200px; margin: 0 auto; padding: 32px 16px;
+      box-sizing: border-box;
+      animation: var(--fade-in);
+    }
+    .hidden { display: none !important; }
+    /* Hero Section */
+    .hero {
+      position: relative; min-height: 480px;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      background: #fff url('https://i.postimg.cc/ydfKLR1L/495369071-122096524376871161-3757085341799905912-n.jpg') center/cover no-repeat;
+      border-radius: 32px;
+      box-shadow: 0 8px 32px rgba(178,64,96,0.10), 0 2px 24px rgba(155,203,148,0.07);
+      overflow: hidden;
+      margin-bottom: 40px;
+      animation: var(--fade-in);
+      isolation: isolate;
+      border: 2.5px solid rgba(178,64,96,0.10);
+      transition: box-shadow 0.3s, border 0.3s;
+      will-change: box-shadow, border;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.18);
+      z-index: 1;
+      pointer-events: none;
+      opacity: 1;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      color: var(--rose); text-align: center;
+      padding: 64px 24px 56px 24px;
+      animation: var(--slide-up);
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(178,64,96,0.08);
+      border: 1.5px solid rgba(178,64,96,0.07);
+      transition: box-shadow 0.3s, border 0.3s;
+    }
+    .hero-title {
+      font-size: 3.2rem; font-weight: 800; margin-bottom: 18px;
+      letter-spacing: 1.5px;
+      color: var(--rose);
+      text-shadow: 0 2px 18px rgba(178,64,96,0.10);
+      filter: none;
+    }
+    .hero-subtitle {
+      font-size: 1.5rem; font-weight: 500; margin-bottom: 38px;
+      text-shadow: 0 2px 12px rgba(178,64,96,0.08);
+      color: #444;
+    }
+    .hero-btn {
+  background: var(--rose);
+  color: #fff;
+      border: 1.5px solid rgba(178,64,96,0.13);
+      border-radius: 18px;
+      font-size: 1.18rem; font-weight: 700;
+      padding: 14px 38px; cursor: pointer;
+      box-shadow: 0 2px 12px rgba(178,64,96,0.08);
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s, transform 0.13s;
+      position: relative;
+      overflow: hidden;
+      outline: none;
+      filter: none;
+    }
+    /* Mission Section */
+    .hero-btn:hover {
+      background: #f7f7f7;
+      color: var(--rose);
+      border: 1.5px solid var(--rose);
+      box-shadow: 0 4px 18px rgba(178,64,96,0.13);
+      transform: scale(1.05);
+    }
+    .bubble-title-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .bubble-title {
+      display: inline-block;
+      background: #fff;
+      color: var(--rose);
+      font-weight: 700;
+      border-radius: 22px;
+      padding: 18px 54px;
+      font-size: 1.7rem;
+      box-shadow: 0 4px 18px 0 rgba(178,64,96,0.18);
+      margin-bottom: 28px;
+      animation: var(--scale-in);
+      border: 1.5px solid rgba(178,64,96,0.13);
+      filter: none;
+      transition: box-shadow 0.3s, border 0.3s;
+    }
+    .mission-cards {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(178,64,96,0.13), 0 2px 24px rgba(155,203,148,0.09);
+      padding: 28px 22px;
+      flex: 1 1 260px; max-width: 340px;
+      display: flex; flex-direction: column; align-items: center;
+      margin-bottom: 20px;
+      min-width: 220px;
+      animation: var(--scale-in);
+      border: 2px solid rgba(178,64,96,0.09);
+      transition: box-shadow 0.3s, border 0.3s;
+    }
+    .card img {
+      width: 100%; height: 160px; object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      background: #eee;
+      box-shadow: 0 2px 16px rgba(178,64,96,0.10);
+    }
+    .card-title {
+      font-size: 1.1rem; font-weight: 600; color: var(--rose);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .card-desc {
+      font-size: 1rem; color: #444; text-align: center;
+    }
+    /* Team Section */
+    .team-bubble {
+      display: flex; justify-content: center; align-items: center;
+      margin: 32px 0 16px 0;
+    }
+    .team-bubble span {
+      background: #fff;
+      color: var(--rose);
+      font-weight: 700; font-size: 1.2rem;
+      border-radius: 18px; padding: 10px 38px;
+      border: 1.5px solid var(--rose);
+      box-shadow: 0 0 3px 0.5px var(--rose), 0 1px 3px 0 var(--rose);
+      animation: var(--scale-in);
+      filter: none;
+      transition: box-shadow 0.3s, border 0.3s;
+    }
+    .team-slider {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      background: rgba(255,255,255,0.92);
+      border-radius: 32px;
+      box-shadow: 0 8px 32px rgba(178,64,96,0.13), 0 2px 24px rgba(155,203,148,0.09);
+      overflow: hidden;
+      min-height: 420px;
+      margin-bottom: 40px;
+      border: 2px solid rgba(178,64,96,0.09);
+      transition: box-shadow 0.3s, border 0.3s;
+    }
+    .slider-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: #fff;
+      color: var(--rose);
+      border: 2px solid var(--rose);
+      border-radius: 50%; width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(178,64,96,0.10);
+      z-index: 2;
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s, transform 0.13s;
+    }
+    .slider-arrow:hover {
+      background: #f7f7f7;
+      color: var(--rose);
+      border: 2px solid var(--rose);
+      box-shadow: 0 8px 32px rgba(178,64,96,0.13);
+      transform: scale(1.08);
+}
+    .slider-arrow.left { left: 12px; }
+    .slider-arrow.right { right: 12px; }
+    .slider-img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%;
+      max-height: 420px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.7s cubic-bezier(.77,0,.175,1);
+    }
+    .slider-img.active {
+      opacity: 1;
+      z-index: 2;
+      pointer-events: auto;
+      animation: fadeIn 0.7s cubic-bezier(.77,0,.175,1);
+    }
+    .slider-dots {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px;
+    }
+    .slider-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #eee; border: 2px solid var(--rose);
+      cursor: pointer; transition: background 0.2s, border 0.2s;
+    }
+    .slider-dot.active {
+      background: var(--rose); border: 2px solid var(--green);
+    }
+    /* Catalog */
+    .catalog-alpha {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px;
+    }
+    .catalog-btn {
+      background: #fff; color: var(--rose);
+      border: 1.5px solid rgba(178,64,96,0.13);
+      border-radius: 14px;
+      font-size: 1.1rem; font-weight: 600;
+      padding: 10px 18px; cursor: pointer;
+      box-shadow: 0 2px 12px rgba(178,64,96,0.08);
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      animation: var(--fade-in);
+    }
+.catalog-btn:active { background: #f7f7f7; border: 1.5px solid var(--rose); }
+    .catalog-section {
+      text-align: center; margin-top: 24px;
+    }
+    .go-back-btn {
+      background: #fff; color: var(--rose);
+      border: 1.5px solid rgba(178,64,96,0.13);
+      border-radius: 14px;
+      font-size: 1rem; font-weight: 600;
+      padding: 8px 24px; cursor: pointer;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(178,64,96,0.08);
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      animation: var(--fade-in);
+    }
+.go-back-btn:active { background: #f7f7f7; border: 1.5px solid var(--rose); }
+    /* ADR Roses */
+    .adr-header {
+      position: relative;
+      /* Floating rose badge */
+      min-height: 120px;
+    }
+    .adr-header .rose-badge {
+      position: absolute;
+      top: -32px; left: 50%; transform: translateX(-50%);
+      width: 64px; height: 64px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 16px rgba(178,64,96,0.10);
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--rose-light);
+      z-index: 2;
+    }
+    .adr-header .rose-badge img {
+      width: 40px; height: 40px;
+      object-fit: contain;
+    }
+    .adr-header {
+      background: linear-gradient(90deg, #fff 80%, #f8f8fa 100%);
+      color: var(--rose); border-radius: 24px;
+      padding: 40px 8px 32px 8px; text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+      animation: var(--slide-up);
+    }
+    .adr-header svg {
+      /* Divider line */
+      margin-top: 16px;
+      position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%);
+      width: 80%; height: 36px;
+    }
+    .adr-title { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .adr-subtitle { font-size: 1.2rem; font-weight: 400; margin-bottom: 16px; }
+    .adr-header .adr-subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      background: #fff;
+      color: var(--rose);
+      border-radius: 18px;
+      padding: 18px 32px;
+      border: 1.5px solid var(--rose-light);
+      box-shadow: 0 2px 16px 0 rgba(178,64,96,0.08);
+      display: block;
+    }
+    .adr-section {
+      text-align: center; margin-bottom: 32px; font-size: 1.1rem; color: #444;
+    }
+    .adr-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin: 0 auto;
+      max-width: 1200px;
+      padding: 32px 16px;
+      animation: var(--fade-in);
+    }
+    .adr-card {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(178,64,96,0.13), 0 2px 24px rgba(155,203,148,0.09);
+      padding: 32px 24px;
+      max-width: 340px;
+      min-width: 220px;
+      flex: 1 1 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      border: 2px solid rgba(178,64,96,0.09);
+      margin-bottom: 24px;
+      transition: box-shadow 0.3s, border 0.3s, transform 0.2s;
+      animation: var(--scale-in);
+    }
+    .adr-card:hover {
+      box-shadow: 0 12px 48px rgba(178,64,96,0.18), 0 2px 32px rgba(155,203,148,0.13);
+      border-color: #f3e6ea;
+      transform: scale(1.03);
+    }
+    .adr-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 24px;
+      margin-bottom: 16px;
+      background: #eee;
+      box-shadow: 0 2px 16px rgba(178,64,96,0.10);
+    }
+    .adr-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #9BCB94;
+      color: #B24060;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 16px;
+      padding: 6px 16px;
+      box-shadow: 0 2px 8px rgba(178,64,96,0.10);
+      letter-spacing: 1px;
+      z-index: 2;
+      transition: box-shadow 0.2s, background 0.2s;
+    }
+    .adr-card:hover .adr-badge {
+      background: #b2e6c0;
+      box-shadow: 0 4px 18px rgba(178,64,96,0.18);
+    }
+    .adr-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #B24060;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .adr-desc {
+      font-size: 1rem;
+      color: #444;
+      text-align: center;
+    }
+    /* Articles & News */
+    .page-header {
+      text-align: center; margin-bottom: 24px;
+      animation: var(--slide-up);
+    }
+    .page-title { font-size: 2rem; font-weight: 700; color: var(--rose); margin-bottom: 8px; }
+    .page-subtitle { font-size: 1.2rem; font-weight: 400; color: #444; }
+    .card-list {
+      display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+    }
+    .article-card, .news-card {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 18px; max-width: 340px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      margin-bottom: 16px;
+      min-width: 220px;
+      animation: var(--scale-in);
+    }
+    .card-date {
+      font-size: 0.95rem; color: var(--green); font-weight: 600; margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 1.1rem; font-weight: 600; color: var(--rose); margin-bottom: 8px;
+    }
+    .card-preview {
+      font-size: 1rem; color: #444;
+    }
+    /* Contact */
+    .contact-form {
+      max-width: 420px; margin: 0 auto; background: var(--white);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 32px 24px; display: flex; flex-direction: column; gap: 18px;
+      animation: var(--slide-up);
+    }
+    .form-label {
+      font-weight: 600; color: var(--rose); margin-bottom: 4px;
+    }
+    .form-input, .form-textarea {
+      border: 1px solid #ccc; border-radius: var(--radius);
+      padding: 10px 14px; font-size: 1rem;
+      font-family: inherit; resize: none;
+    }
+    .form-textarea { min-height: 80px; }
+    .form-btn {
+      background: #fff; color: var(--rose);
+      border: 1.5px solid rgba(178,64,96,0.13);
+      border-radius: 14px;
+      font-size: 1.1rem; font-weight: 600;
+      padding: 12px 32px; cursor: pointer;
+      box-shadow: 0 2px 12px rgba(178,64,96,0.08);
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      animation: var(--fade-in);
+    }
+.form-btn:active { background: #f7f7f7; border: 1.5px solid var(--rose); }
+    /* Footer */
+    footer {
+      background: var(--footer-bg); color: var(--white);
+      padding: 32px 16px; text-align: center;
+      font-size: 1rem; margin-top: 32px;
+      border-top: 1px solid #333;
+      animation: var(--fade-in);
+    }
+    .footer-contact {
+      color: var(--green); font-weight: 600; margin-bottom: 8px;
+    }
+    .footer-info {
+      color: var(--white); font-size: 0.95rem; margin-bottom: 8px;
+    }
+    .footer-copyright {
+      color: #aaa; font-size: 0.95rem;
+    }
+    /* Mission Details Aesthetic Styles */
+    .mission-details-hero {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 0 auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 32px 32px 0 0;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(178,64,96,0.10);
+      background: linear-gradient(120deg, var(--rose) 0%, var(--green) 100%);
+      animation: var(--fade-in);
+    }
+    .mission-details-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 32px 32px 0 0;
+      box-shadow: 0 2px 16px rgba(178,64,96,0.08);
+      opacity: 0.95;
+      filter: brightness(0.92) saturate(1.1);
+      animation: var(--fade-in);
+    }
+    .mission-details-bubble {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mission-details-title {
+      background: var(--white);
+      color: var(--rose);
+      font-weight: 700;
+      font-size: 2rem;
+      border-radius: 32px;
+      padding: 16px 48px;
+      box-shadow: 0 4px 24px rgba(178,64,96,0.12);
+      letter-spacing: 1px;
+      animation: var(--scale-in);
+      border: 2px solid var(--rose);
+    }
+    .mission-details-content {
+      max-width: 900px;
+      margin: 0 auto 48px auto;
+      background: var(--white);
+      color: #222;
+      border-radius: 0 0 32px 32px;
+      padding: 48px 32px 40px 32px;
+      font-size: 1.18rem;
+      font-weight: 500;
+      line-height: 1.8;
+      box-shadow: 0 8px 32px rgba(178,64,96,0.10);
+      animation: var(--fade-in);
+      text-align: justify;
+      position: relative;
+      top: -16px;
+    }
+    @media (max-width: 900px) {
+      .mission-details-hero, .mission-details-content { max-width: 100%; padding: 24px 8px; }
+      .mission-details-title { font-size: 1.3rem; padding: 10px 24px; }
+      .mission-details-content { font-size: 1rem; padding: 18px 8px; }
+      .mission-details-img { max-height: 180px; }
+    }
+    @media (max-width: 600px) {
+      .mission-details-hero, .mission-details-content { border-radius: 12px; }
+      .mission-details-title { font-size: 1rem; padding: 6px 12px; }
+      .mission-details-content { font-size: 0.95rem; padding: 12px 4px; }
+      .mission-details-img { max-height: 100px; }
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      nav { gap: 18px; }
+      .mission-cards, .adr-grid, .card-list { flex-direction: column; gap: 16px; }
+      section { padding: 24px 8px; }
+      .adr-header { padding: 24px 8px; }
+      .team-slider { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0 8px; height: 56px; }
+      .logo { height: 36px; width: 36px; }
+      .hero-title { font-size: 1.5rem; }
+      .hero-content { padding: 24px 8px; }
+      .bubble-title, .team-bubble span { font-size: 1rem; padding: 6px 18px; }
+      .card, .adr-card, .article-card, .news-card { padding: 14px 8px; min-width: 160px; }
+      .contact-form { padding: 18px 8px; }
+      .adr-header { font-size: 1.1rem; }
+      .adr-title { font-size: 1.2rem; }
+      .page-title { font-size: 1.2rem; }
+      .page-header { margin-bottom: 12px; }
+      .footer-contact, .footer-info, .footer-copyright { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-square">
+      <img src="https://i.postimg.cc/Lsww5VsK/photoshop-project34c213.png" alt="EduGarden Logo" />
+    </div>
+    <div class="brand-text" style="font-family: 'Poppins', 'Noto Sans Georgian', sans-serif; font-weight:700; font-size:1.6rem; color:var(--rose); letter-spacing:1px; margin-right:32px; margin-left:112px; user-select:none;">EduGarden</div>
+    <nav aria-label="Main Navigation">
+      <a href="#" data-translate="nav_home" class="active" onclick="showPage('home')">Home</a>
+      <a href="#" data-translate="nav_catalog" onclick="showPage('catalog')">Catalog</a>
+      <a href="#" data-translate="nav_adr" onclick="showPage('adr')">ADR Roses</a>
+      <a href="#" data-translate="nav_articles" onclick="showPage('articles')">Articles</a>
+      <a href="#" data-translate="nav_contact" onclick="showPage('contact')">Contact</a>
+    </nav>
+    <div class="lang-switch" aria-label="Language Switcher">
+      <button class="lang-btn" id="lang-ge" onclick="switchLanguage('ge')" aria-pressed="false">GE</button>
+      <button class="lang-btn active" id="lang-en" onclick="switchLanguage('en')" aria-pressed="true">EN</button>
+    </div>
+  </header>
+  <main>
+    <!-- Home Page -->
+    <section id="home" class="page-section">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-title" data-translate="home_title">Welcome to EduGarden</div>
+          <div class="hero-subtitle" data-translate="home_subtitle">Social Entrepreneurship for a Sustainable Future</div>
+          <button class="hero-btn" data-translate="home_learn" onclick="showPage('mission-details')">Learn More</button>
+        </div>
+      </div>
+      <section id="mission">
+        <div class="bubble-title-wrapper"><span class="bubble-title" data-translate="mission_title">More Info</span></div>
+        <div class="mission-cards">
+          <div class="card">
+            <a href="https://www.google.com/maps/place/%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98%E1%83%A1+%E2%84%968+%E1%83%A1%E1%83%90%E1%83%AF%E1%83%90%E1%83%A0%E1%83%9D+%E1%83%A1%E1%83%99%E1%83%9D%E1%83%9A%E1%83%90/@41.9798124,44.1189636,655m/data=!3m1!1e3!4m6!3m5!1s0x40449c1bc2bb1b8d:0xa4f6f9dd2ba385a2!8m2!3d41.9798084!4d44.1215385!16s%2Fg%2F11cs6kt7lk?entry=tts&g_ep=EgoyMDI1MDYzMC4wIPu8ASoASAFQAw%3D%3D&skid=13bad7fc-ad8a-4d21-9ba0-910f7f3d7009" target="_blank" style="text-decoration:none;">
+              <img src="https://i.postimg.cc/L6T8QG52/Annotation-2025-07-05-124229.png" alt="EduGarden Location Map" onerror="this.src='https://via.placeholder.com/340x160?text=Map'" />
+              <div class="card-title" data-translate="mission_location_title">Location</div>
+              <div class="card-desc" data-translate="mission_location_desc">Our enterprise is located at 45 Petriashvili St, Gori, Georgia, next to Gori N8 Public School. The site is convenient for both locals and visitors, and helps promote environmental education in the region.</div>
+            </a>
+          </div>
+          <div class="card">
+            <img src="https://i.postimg.cc/901Kjdsg/image.png" alt="EU Funding Logo" onerror="this.src='https://via.placeholder.com/340x160?text=EU'" />
+            <div class="card-title" data-translate="mission_finance_title">Finance</div>
+            <div class="card-desc" data-translate="mission_finance_desc">The project is co-funded by the European Union. Project partner organizations are: Childfund Deutschland E.V. (Germany), Entrepreneurship School (Ukraine), NGO 'Vesta' (Moldova), ECOVISIO (Moldova), CODE Social Entrepreneurship Hub (Armenia), Center for Economic Development and Support (Georgia)</div>
+          </div>
+          <div class="card">
+            <img src="https://i.postimg.cc/9Xdr7L35/photo-1564277872723-f2b4203eb061.avif" alt="ADR Certified Rose" onerror="this.src='https://via.placeholder.com/340x160?text=Rose'" />
+            <div class="card-title" data-translate="mission_adr_title">ADR Roses</div>
+            <div class="card-desc" data-translate="mission_adr_desc">ADR roses are strong, healthy, and bloom beautifully. They grow without chemicals and rarely get sick. They are tested in Germany.</div>
+          </div>
+        </div>
+      </section>
+      <div class="team-bubble"><span id="team-bubble-text">Our Team</span></div>
+      <div class="team-slider" id="photo-slider">
+        <button class="slider-arrow left" aria-label="Previous" onclick="sliderPrev()">&#8592;</button>
+        <img src="https://i.postimg.cc/s27yD4HT/508169835-23895923333360813-8061243371952174111-n.jpg" alt="Slide 1" class="slider-img active" />
+        <img src="https://i.postimg.cc/L6YtXqRJ/505189859-1124542789697088-2276860014764962200-n.jpg" alt="Slide 2" class="slider-img" />
+        <img src="https://i.postimg.cc/nhKQjBWh/504935489-2477129755972064-6432430428670200337-n.jpg" alt="Slide 3" class="slider-img" />
+        <img src="https://i.postimg.cc/Bb1jqKDs/504407941-2477129775972062-4570756569178418137-n.jpg" alt="Slide 4" class="slider-img" />
+        <img src="https://i.postimg.cc/zfVbd6BV/503411898-23881150968163743-1607610554899647775-n.jpg" alt="Slide 5" class="slider-img" />
+        <img src="https://i.postimg.cc/s2hfGrx9/503485816-23896223823323124-7124551829005975839-n.jpg" alt="Slide 6" class="slider-img" />
+        <img src="https://i.postimg.cc/7ZznB5QF/508012645-23895910650028748-5374261132610574698-n.jpg" alt="Slide 7" class="slider-img" />
+        <img src="https://i.postimg.cc/13kxZKcC/518311798-24124635453822932-1679221572965788087-n.jpg" alt="Slide 8" class="slider-img" />
+        <img src="https://i.postimg.cc/VLhpjFTf/518350378-24124641413822336-8626206444506939577-n.jpg" alt="Slide 9" class="slider-img" />
+        <img src="https://i.postimg.cc/prpkTwPD/517780524-24124629837156827-8420992604332891790-n.jpg" alt="Slide 10" class="slider-img" />
+        <img src="https://i.postimg.cc/PrcjpfM7/image.png" alt="Slide 11" class="slider-img" />
+        <button class="slider-arrow right" aria-label="Next" onclick="sliderNext()">&#8594;</button>
+        <div class="slider-dots" id="slider-dots"></div>
+      </div>
+    </section>
+    <!-- Catalog Page -->
+    <section id="catalog" class="page-section hidden">
+      <div class="page-header">
+        <div class="page-title" data-translate="catalog_title">Catalog</div>
+        <div class="page-subtitle" data-translate="catalog_subtitle">Browse our collection by alphabet.</div>
+      </div>
+      <div id="catalog-alpha" class="catalog-alpha"></div>
+      <div id="catalog-section" class="catalog-section hidden"></div>
+    </section>
+    <!-- ADR Roses Page -->
+    <section id="adr" class="page-section hidden">
+      <!-- Clean Hero Section -->
+      <div class="adr-hero-container" style="position:relative;display:flex;align-items:center;justify-content:center;min-height:360px;padding:64px 24px;border-radius:32px;overflow:hidden;margin-bottom:40px;background:url('https://i.postimg.cc/Fz6W18Nt/photo-1690829309936-f6ec3fd95b98.avif') center/cover no-repeat;">
+        <!-- Dark overlay for text readability -->
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:1;"></div>
+        <!-- Hero content -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#ffffff;padding:0 24px;width:100%;max-width:900px;z-index:2;">
+          <h1 style="font-size:3.2rem;font-weight:800;margin-bottom:16px;letter-spacing:1px;text-shadow:2px 2px 8px rgba(0,0,0,0.8);color:#ffffff !important;line-height:1.2;" data-translate="adr_title">ADR<br>სერტიფიცირებული<br>ვარდები</h1>
+
+        </div>
+      </div>
+      
+      <!-- ADR Description Section -->
+      <div class="adr-description" style="max-width:900px;margin:0 auto 48px auto;padding:0 24px;font-size:1.1rem;line-height:1.7;color:#333;font-weight:600;white-space:pre-line;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,0.05);" data-translate="adr_subtitle"></div>
+      <style>
+        .adr-card{position:relative;}
+        .adr-badge{
+          position:absolute;
+          top:12px;
+          left:-12px;
+          background:#2ecc71;
+          color:#fff;
+          padding:4px 6px;
+          font-size:0.8rem;
+          font-weight:700;
+          transform:rotate(-15deg);
+          border-radius:4px;
+          box-shadow:0 2px 4px rgba(0,0,0,0.3);
+          line-height:1;display:inline-block;text-align:center;pointer-events:none;
+          z-index:3;
+        }
+        .adr-card:hover .adr-badge{
+          color:#074b23;
+        
+        }
+      </style>
+
+      <div class="adr-grid">
+        <div class="adr-card" tabindex="0">
+          <div class="adr-badge" data-translate="adr_badge">ADR</div>
+          <img src="https://i.postimg.cc/ZqxC9w6B/caracho.jpg" alt="CARACHO ADR Rose" />
+          <div class="adr-title" data-translate="adr_caracho_title">CARACHO</div>
+          <div class="adr-desc" data-translate="adr_caracho_desc">შრაბი
+ალისფერი -წითელი გვირვინები ვერცხლისფერი რევერსითა და ფურცლების თავისუფალი განლაგებით. მსუბუქი არომატით.
+მუქი მწვანე, ნახევრადპრიალა ფოთლებით.
+სიმაღლე: 70-90 სმ
+სიგანე: 85-105 სმ
+სელექციონერი: Kordes
+წელი: 2021</div>
+        </div>
+        <div class="adr-card" tabindex="0">
+          <div class="adr-badge" data-translate="adr_badge">ADR</div>
+          <img src="https://i.postimg.cc/4ymMMNG6/02-rose-coral-lions-181201-origin-img.jpg" alt="CORAL LIONS-ROSE ADR Rose" />
+          <div class="adr-title" data-translate="adr_coral_title">CORAL LIONS-ROSE</div>
+          <div class="adr-desc" data-translate="adr_coral_desc">ფლორიბუნდა
+გარგრისფერ-ნარინჯისფერი გვირგვინი მოვარდისფრო კიდეებით.
+პრიალა მწვანე ფოთლებით
+სიმაღლე: 90-110 სმ
+სიგნე: 85-105 სმ
+სელექციონერი: Kordes 
+წელი: 2019</div>
+        </div>
+        <div class="adr-card" tabindex="0">
+          <div class="adr-badge" data-translate="adr_badge">ADR</div>
+          <img src="https://i.postimg.cc/8zNC2qFF/Meine-Rose-kopie.jpg" alt="MEINE ROSE ADR Rose" />
+          <div class="adr-title" data-translate="adr_meine_title">MEINE ROSE</div>
+          <div class="adr-desc" data-translate="adr_meine_desc">ჩაის ჰიბრიდი
+ნაზი ვარდისფერი, მსუბუქი სურნელით, მუქი მწვანე ნახევრადპრილა ფოთლებით, მოწითალო კოკორით.
+სიმაღლე: 95-115სმ
+სიგანე:90-110
+სელექციონერი: Kordes
+ წელი: 2021</div>
+        </div>
+        </div>
+      </div>
+    </section>
+    <!-- Articles Page -->
+      <style>
+        /* Facebook-like feed for Articles */
+        #articles .article-card .post-header{display:flex;align-items:center;margin-bottom:8px;}
+        #articles .article-card .avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:8px;}
+        #articles .article-card .post-author{font-weight:600;color:#050505;font-size:0.95rem;}
+        #articles .article-card .post-date{font-size:0.75rem;color:#65676b;}
+        #articles .card-list{display:flex;flex-direction:column;gap:16px;margin-top:24px;align-items:center;}
+        #articles .article-card{width:100%;max-width:520px;background:#ffffff;border:1px solid #e0e0e0;border-radius:8px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,0.05);cursor:pointer;transition:box-shadow .2s ease;}
+        #articles .article-card:hover{box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+        #articles .article-card .card-date{font-size:0.8rem;color:#65676b;margin-bottom:4px;}
+        #articles .article-card .card-title{font-weight:600;font-size:1.1rem;margin-bottom:8px;color:#050505;}
+        #articles .article-card .card-preview{font-size:0.95rem;color:#1c1e21;line-height:1.5;max-height:72px;overflow:hidden;transition:max-height .3s ease;position:relative;}#articles .article-card .card-preview::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(0deg,#ffffff,rgba(255,255,255,0));pointer-events:none;}#articles .article-card.expanded .card-preview{max-height:1000px;}#articles .article-card.expanded .card-preview::after{display:none;}#articles .article-see-more{display:inline-block;color:#1877f2;font-weight:600;margin-top:4px;cursor:pointer;}
+        #articles .article-card.expanded .card-preview{max-height:1000px;}
+      </style>
+    <section id="articles" class="page-section hidden">
+      <div class="page-header">
+        <div class="page-title" data-translate="articles_title">Articles</div>
+        <div class="page-subtitle" data-translate="articles_subtitle">Read our latest articles on sustainable gardening.</div>
+      </div>
+      <div class="card-list">
+        <div class="article-card">
+          <div class="post-header">
+            <img class="avatar" src="https://i.postimg.cc/Lsww5VsK/photoshop-project34c213.png" alt="EduGarden Avatar" />
+            <div>
+              <div class="post-author">EduGarden</div>
+              <div class="post-date">2025-07-01</div>
+            </div>
+          </div>
+          <div class="card-preview" data-translate="article1_preview">Learn how to create a sustainable garden with our expert tips.</div>
+        </div>
+        <div class="article-card">
+          <div class="post-header">
+            <img class="avatar" src="https://i.postimg.cc/Lsww5VsK/photoshop-project34c213.png" alt="EduGarden Avatar" />
+            <div>
+              <div class="post-author">EduGarden</div>
+              <div class="post-date">2025-06-15</div>
+            </div>
+          </div>
+          <div class="card-preview" data-translate="article2_preview">Discover how social entrepreneurship is changing communities.</div>
+        </div>
+        <div class="article-card">
+          <div class="post-header">
+            <img class="avatar" src="https://i.postimg.cc/Lsww5VsK/photoshop-project34c213.png" alt="EduGarden Avatar" />
+            <div>
+              <div class="post-author">EduGarden</div>
+              <div class="post-date">2025-05-28</div>
+            </div>
+          </div>
+          <div class="card-preview" data-translate="article3_preview">What makes ADR certified roses unique and valuable?</div>
+        </div>
+      </div>
+    <script>
+      // Expand / collapse article posts on click
+      document.addEventListener('DOMContentLoaded',()=>{
+        document.querySelectorAll('#articles .article-card').forEach(card=>{
+          const preview=card.querySelector('.card-preview');
+          if(!preview) return;
+          const link=document.createElement('span');
+          link.className='article-see-more';
+          link.textContent='See more';
+          card.appendChild(link);
+          link.addEventListener('click',e=>{
+            e.stopPropagation();
+            card.classList.toggle('expanded');
+            link.textContent=card.classList.contains('expanded')?'See less':'See more';
+          });
+        });
+      });
+    </script>
+    </section>
+    <!-- News Page -->
+
+
+    <!-- Contact Page -->
+    <section id="contact" class="page-section hidden">
+      <div class="page-header">
+        <div class="page-title" data-translate="contact_title">Contact Us</div>
+        <div class="page-subtitle" data-translate="contact_subtitle">We'd love to hear from you!</div>
+      </div>
+      <form class="contact-form" autocomplete="off" onsubmit="event.preventDefault(); alert('Message sent!');">
+        <label class="form-label" for="name" data-translate="contact_name">Name</label>
+        <input class="form-input" id="name" name="name" type="text" placeholder="Your Name" required />
+        <label class="form-label" for="email" data-translate="contact_email">Email</label>
+        <input class="form-input" id="email" name="email" type="email" placeholder="Your Email" required />
+        <label class="form-label" for="message" data-translate="contact_message">Message</label>
+        <textarea class="form-textarea" id="message" name="message" placeholder="Your Message" required></textarea>
+        <button class="form-btn" type="submit" data-translate="contact_send">Send</button>
+      </form>
+    </section>
+    <!-- Mission Details Page -->
+    <section id="mission-details" class="page-section hidden">
+      <div class="mission-details-hero">
+        <img src="https://i.postimg.cc/ydfKLR1L/495369071-122096524376871161-3757085341799905912-n.jpg" alt="EduGarden Mission" class="mission-details-img" />
+        <div class="mission-details-bubble">
+          <span class="mission-details-title" data-translate="mission_details_title">Mission Details</span>
+        </div>
+      </div>
+      <div class="mission-details-content" data-translate="mission_details_desc">
+        EduGarden-ის მისიაა თემში შექმნას ისეთი ინკლუზიური საგანმანათლებლო გარემო, სადაც თითოეულ ადამიანს ექნება შესაძლებლობა, მონაწილეობა მიიღოს ეკოლოგიური მებაღეობის პროცესში, განავითაროს საკუთარი პოტენციალი და შეიტანოს წვლილი საზოგადოების კეთილდღეობაში. დაეხმარება მომხმარებლებს სწორად შეარჩიონ მიმზიდველი და ჯანსაღი მცენარეები. ასეთი ჯიშების შერჩევა ამცირებს მათი მოვლის ხარჯებს, პესტიციდების გამოყენებას, ზოგავს რესურსებს, ხელს უწყობს გარემოს დაცვასა და ეკოსისტემის ჯანსაღად შენარჩუნებას. საწარმო ხელს შეუწყობს გარემოს მიმართ მდგრადი მცენარეების გამრავლებას. ჩვენ გვჯერა, რომ EduGarden-ი გახდება ინკლუზიური მებაღეობის „ჰაბი“, სადაც სხვადასხვა ასაკისა და შესაძლებლობის მქონე ადამიანები ერთად სწავლობენ, ავითარებენ ბუნებრივი და ინოვაციური მებაღეობის მეთოდებს, თითოეულ მონაწილეს შეაქვს წვლილი ეკოსისტემის მდგრად განვითარებასა და ეკოლოგიური პასუხისმგებლობის გაძლიერებაში.
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-contact" data-translate="footer_contact">Contact:</div>
+    <div class="footer-info">+995 577 97 57 88 | edugarden8@gmail.com</div>
+    <div class="footer-copyright" id="footer-copyright" data-translate="footer_copyright">© 2025 EduGarden. All rights reserved. | Social Entrepreneurship for a Sustainable Future</div>
+  </footer>
+  <script>
+    // Translation dictionary
+    const translations = {
+      en: {
+        nav_home: "Home",
+        nav_catalog: "Catalog",
+        nav_adr: "ADR Roses",
+        nav_articles: "Articles",
+        nav_news: "News",
+        nav_contact: "Contact",
+        home_title: "Welcome to EduGarden",
+        home_subtitle: "Social Entrepreneurship for a Sustainable Future",
+        home_learn: "Learn More",
+        mission_details_title: "Mission Details",
+        mission_details_desc: "EduGarden's mission is to create an inclusive educational environment in the community, where everyone has the opportunity to participate in ecological gardening, develop their potential, and contribute to the well-being of society. It helps users select attractive and healthy plants. Choosing such varieties reduces maintenance costs, pesticide use, saves resources, and promotes environmental protection and ecosystem health. The enterprise will promote the propagation of environmentally sustainable plants. We believe EduGarden will become an inclusive gardening 'hub', where people of different ages and abilities learn together, develop natural and innovative gardening methods, and each participant contributes to the sustainable development of the ecosystem and the strengthening of ecological responsibility.",
+        mission_title: "More Info",
+        mission_location_title: "Location",
+        mission_location_desc: "Our enterprise is located at 45 Petriashvili St, Gori, Georgia, next to Gori N8 Public School. The site is convenient for both locals and visitors, and helps promote environmental education in the region.",
+        mission_finance_title: "Finance",
+        mission_finance_desc: "Supported by the European Union, EduGarden promotes social entrepreneurship and green innovation.",
+        mission_finance_desc: "The project is co-funded by the European Union. Project partner organizations are: Childfund Deutschland E.V. (Germany), Entrepreneurship School (Ukraine), NGO 'Vesta' (Moldova), ECOVISIO (Moldova), CODE Social Entrepreneurship Hub (Armenia), Center for Economic Development and Support (Georgia)",
+        mission_adr_title: "ADR Roses",
+        mission_adr_desc: "Discover our ADR certified roses, grown sustainably and with care for the environment.",
+        mission_adr_desc: "ADR roses are strong, healthy, and bloom beautifully. They grow without chemicals and rarely get sick. They are tested in Germany.",
+        team_bubble: "Our Team",
+        catalog_title: "Catalog",
+        catalog_subtitle: "Browse our collection by alphabet.",
+        catalog_go_back: "Go Back",
+        adr_title: "ADR\nCertified\nRoses",
+        adr_subtitle: "Discover our selection of ADR certified roses.",
+        adr_subtitle: "ADR (Allgemeine Deutsche Rosenneuheitenprüfung) is a German rose certification system that ensures the highest standards for disease resistance, winter hardiness, and overall garden quality. Roses are tested for several years in special experimental fields, cared for without chemicals, and must remain healthy without premature disease. Only varieties that thrive in various climates and are easy to grow receive the ADR certificate. ADR roses are ideal for both professional gardeners and home enthusiasts, as they require minimal chemical treatment and offer durability, resulting in high-quality, long-blooming roses. These varieties not only provide outstanding visual beauty but also reduce garden maintenance time and costs.",
+        adr_info: "ADR certification ensures the highest standards of disease resistance, sustainability, and beauty in roses.",
+        adr_caracho_title: "CARACHO",
+        adr_caracho_desc: "Shrub\nScarlet-red crowns with silvery reverse and free arrangement of petals. Light fragrance.\nDark green, semi-glossy foliage.\nHeight: 70-90 cm\nWidth: 85-105 cm\nBreeder: Kordes\nYear: 2021",
+        adr_coral_title: "CORAL LIONS-ROSE",
+        adr_coral_desc: "Floribunda\nApricot-orange bloom with pinkish edges.\nGlossy green foliage\nHeight: 90-110 cm\nWidth: 85-105 cm\nBreeder: Kordes\nYear: 2019",
+        adr_meine_title: "MEINE ROSE",
+        adr_meine_desc: "Hybrid tea\nSoft pink blooms with light fragrance, dark green semi-glossy foliage with reddish buds.\nHeight: 95-115 cm\nWidth: 90-110 cm\nBreeder: Kordes\nYear: 2021",
+        adr_badge: "ADR CERTIFIED",
+        articles_title: "Articles",
+        articles_subtitle: "Read our latest articles on sustainable gardening.",
+        article1_title: "Sustainable Gardening Tips",
+        article1_preview: "Learn how to create a sustainable garden with our expert tips.",
+        article2_title: "The Power of Social Entrepreneurship",
+        article2_preview: "Discover how social entrepreneurship is changing communities.",
+        article3_title: "ADR Roses Explained",
+        article3_preview: "What makes ADR certified roses unique and valuable?",
+        news_title: "News",
+        news_subtitle: "Stay updated with our latest news and events.",
+        news1_title: "EduGarden Wins EU Grant",
+        news1_preview: "We are proud to announce our EU grant for sustainable gardening.",
+        news2_title: "ADR Roses Now Available",
+        news2_preview: "Our ADR certified roses are now available for purchase.",
+        news3_title: "Community Workshop",
+        news3_preview: "Join our upcoming workshop on sustainable gardening.",
+        contact_title: "Contact Us",
+        contact_subtitle: "We'd love to hear from you!",
+        contact_name: "Name",
+        contact_email: "Email",
+        contact_message: "Message",
+        contact_send: "Send",
+        footer_contact: "Contact:",
+        footer_copyright: "© 2025 EduGarden. All rights reserved. | Social Entrepreneurship for a Sustainable Future"
+      },
+      ge: {
+        nav_home: "მთავარი",
+        nav_catalog: "კატალოგი",
+        nav_adr: "ADR ვარდები",
+        nav_articles: "სტატიები",
+        nav_news: "სიახლეები",
+        nav_contact: "კონტაქტი",
+        home_title: "მოგესალმებით EduGarden-ში",
+        home_subtitle: "სოციალური მეწარმეობა მდგრადი მომავლისთვის",
+        home_learn: "გაიგე მეტი",
+        mission_details_title: "მისიის დეტალები",
+        mission_details_desc: "EduGarden-ის მისიაა თემში შექმნას ისეთი ინკლუზიური საგანმანათლებლო გარემო, სადაც თითოეულ ადამიანს ექნება შესაძლებლობა, მონაწილეობა მიიღოს ეკოლოგიური მებაღეობის პროცესში, განავითაროს საკუთარი პოტენციალი და შეიტანოს წვლილი საზოგადოების კეთილდღეობაში. დაეხმარება მომხმარებლებს სწორად შეარჩიონ მიმზიდველი და ჯანსაღი მცენარეები. ასეთი ჯიშების შერჩევა ამცირებს მათი მოვლის ხარჯებს, პესტიციდების გამოყენებას, ზოგავს რესურსებს, ხელს უწყობს გარემოს დაცვასა და ეკოსისტემის ჯანსაღად შენარჩუნებას. საწარმო ხელს შეუწყობს გარემოს მიმართ მდგრადი მცენარეების გამრავლებას. ჩვენ გვჯერა, რომ EduGarden-ი გახდება ინკლუზიური მებაღეობის „ჰაბი“, სადაც სხვადასხვა ასაკისა და შესაძლებლობის მქონე ადამიანები ერთად სწავლობენ, ავითარებენ ბუნებრივი და ინოვაციური მებაღეობის მეთოდებს, თითოეულ მონაწილეს შეაქვს წვლილი ეკოსისტემის მდგრად განვითარებასა და ეკოლოგიური პასუხისმგებლობის გაძლიერებაში.",
+        mission_title: "მეტი ინფო",
+        mission_location_title: "მდებარეობა",
+        mission_location_desc: "ჩვენი საწარმო მდებარეობს გორის, პეტრიაშვილის 45-ში, გორის N8 საჯარო სკოლის გვერდით. ადგილი მოსახერხებელია როგორც ადგილობრივებისთვის, ასევე სტუმრებისთვის და ხელს უწყობს გარემოსდაცვითი განათლების პოპულარიზაციას რეგიონში.",
+        mission_finance_title: "ფინანსები",
+        mission_finance_desc: "ევროკავშირის მხარდაჭერით, EduGarden ხელს უწყობს სოციალურ მეწარმეობასა და მწვანე ინოვაციას.",
+        mission_finance_desc: "პროექტი თანადაფინანსებულია ევროკავშირის მიერ. პარტნიორი ორგანიზაციებია: Childfund Deutschland E.V. (გერმანია), Entrepreneurship School (უკრაინა), NGO 'Vesta' (მოლდოვა), ECOVISIO (მოლდოვა), CODE Social Entrepreneurship Hub (სომხეთი), ეკონომიკური განვითარების და მხარდაჭერის ცენტრი (საქართველო)",
+        mission_adr_title: "ADR ვარდები",
+        mission_adr_desc: "გაიცანით ჩვენი ADR სერტიფიცირებული ვარდები, რომლებიც მდგრადად და გარემოსადმი ზრუნვით იზრდება.",
+        mission_adr_desc: "ADR ვარდები ძლიერია, ჯანმრთელი და ულამაზესად ყვავის. ისინი იზრდება ქიმიკატების გარეშე და იშვიათად ავადდება. ტესტირება ხდება გერმანიაში.",
+        team_bubble: "ჩვენი გუნდი",
+        catalog_title: "კატალოგი",
+        catalog_subtitle: "დაათვალიერეთ ჩვენი კოლექცია ანბანის მიხედვით.",
+        catalog_go_back: "უკან დაბრუნება",
+        adr_title: "ADR\nსერტიფიცირებული\nვარდები",
+        adr_subtitle: "ADR (Allgemeine Deutsche Rosenneuheitenprüfung) არის გერმანული ვარდების სერტიფიცირების სისტემა, რომელიც უზრუნველყოფს ვარდების უმაღლეს სტანდარტებს დაავადებების მიმართ გამძლეობაში, ზამთრის გამძლეობასა და ბაღის საერთო ხარისხში. ვარდები რამდენიმე წლის განმავლობაში ტარდება სპეციალურ ექსპერიმენტულ ველებზე, სადაც ისინი უვლიან ქიმიკატების გარეშე და ვადაზე ადრე ავადმყოფობის გარეშე უნდა გაწვდონ. მხოლოდ ის ჯიშები იღებენ ADR სერტიფიკატს, რომლებიც კარგად ვითარდებიან სხვადასხვა კლიმატურ პირობებში და ადვილად მზარდია. ADR ვარდები იდეალურია როგორც პროფესიონალ ბაღპანელებისთვის, ასევე საყოფაცხოვრებო მებაღეებისთვის, რადგან მათ არ სჭირდებათ მუდმივი ქიმიური დამუშავება და სარგებლობენ მდგრადობით, რაც ხარისხიან და დიდხანსყვავილებ ვარდებს უზრუნველყოფს. ეს ჯიშები არა მხოლოდ ვიზუალურად სთავაზობენ გამორჩეულ სილამაზეს, არამედ ამცირებენ ბაღის მოვლის დროს და ხარჯებს.",
+        adr_info: "ADR სერტიფიკატი უზრუნველყოფს დაავადებებისადმი მდგრადობას, მდგრადობას და სილამაზეს ვარდებში.",
+        adr_caracho_title: "CARACHO",
+        adr_caracho_desc: "შრაბი\nალისფერი -წითელი გვირვინები ვერცხლისფერი რევერსითა და ფურცლების თავისუფალი განლაგებით. მსუბუქი არომატით.\nმუქი მწვანე, ნახევრადპრიალა ფოთლებით.\nსიმაღლე: 70-90 სმ\nსიგანე: 85-105 სმ\nსელექციონერი: Kordes\nწელი: 2021",
+        adr_coral_title: "CORAL LIONS-ROSE",
+        adr_coral_desc: "ფლორიბუნდა\nგარგრისფერ-ნარინჯისფერი გვირგვინი მოვარდისფრო კიდეებით.\nპრიალა მწვანე ფოთლებით\nსიმაღლე: 90-110 სმ\nსიგნე: 85-105 სმ\nსელექციონერი: Kordes \nწელი: 2019",
+        adr_meine_title: "MEINE ROSE",
+        adr_meine_desc: "ჩაის ჰიბრიდი\nნაზი ვარდისფერი, მსუბუქი სურნელით, მუქი მწვანე ნახევრადპრილა ფოთლებით, მოწითალო კოკორით.\nსიმაღლე: 95-115სმ\nსიგანე:90-110\nსელექციონერი: Kordes\n წელი: 2021",
+        adr_badge: "სერტიფიცირებული",
+        articles_title: "სტატიები",
+        articles_subtitle: "წაიკითხეთ ჩვენი უახლესი სტატიები მდგრად მებაღეობაზე.",
+        article1_title: "მდგრადი მებაღეობის რჩევები",
+        article1_preview: "შეიტყვეთ, როგორ შექმნათ მდგრადი ბაღი ჩვენი ექსპერტების რჩევებით.",
+        article2_title: "სოციალური მეწარმეობის ძალა",
+        article2_preview: "გაიგეთ, როგორ ცვლის სოციალური მეწარმეობა თემებს.",
+        article3_title: "ADR ვარდების განმარტება",
+        article3_preview: "რა ხდის ADR სერტიფიცირებულ ვარდებს უნიკალურს და ღირებულს?",
+        news_title: "სიახლეები",
+        news_subtitle: "იყავით ინფორმირებული ჩვენი უახლესი სიახლეებით და ღონისძიებებით.",
+        news1_title: "EduGarden-მა EU გრანტი მოიპოვა",
+        news1_preview: "საყვარელო სიახლე – EU გრანტი მდგრადი მებაღეობისთვის!",
+        news2_title: "ADR ვარდები უკვე ხელმისაწვდომია",
+        news2_preview: "ჩვენი ADR სერტიფიცირებული ვარდები უკვე იყიდება.",
+        news3_title: "საზოგადოებრივი ვორქშოფი",
+        news3_preview: "შემოგვიერთდით მდგრადი მებაღეობის ვორქშოფზე.",
+        contact_title: "დაგვიკავშირდით",
+        contact_subtitle: "მოხარული ვიქნებით თქვენი მოსაზრებების მოსმენით!",
+        contact_name: "სახელი",
+        contact_email: "ელ.ფოსტა",
+        contact_message: "შეტყობინება",
+        contact_send: "გაგზავნა",
+        footer_contact: "კონტაქტი:",
+        footer_copyright: "© 2025 EduGarden. ყველა უფლება დაცულია. | სოციალური მეწარმეობა მდგრადი მომავლისთვის"
+      }
+    };
+    let currentLang = 'ge';
+
+    // --- Modern Photo Slider Logic ---
+    const sliderImages = Array.from(document.querySelectorAll('.slider-img'));
+    const sliderDotsContainer = document.getElementById('slider-dots');
+    let sliderIndex = 0;
+    let sliderTimer = null;
+    function showSlider(idx) {
+      sliderImages.forEach((img, i) => {
+        img.classList.toggle('active', i === idx);
+        img.setAttribute('aria-hidden', i === idx ? 'false' : 'true');
+        img.tabIndex = i === idx ? 0 : -1;
+      });
+      Array.from(sliderDotsContainer.children).forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+      });
+      sliderIndex = idx;
+    }
+    function sliderPrev() {
+      showSlider((sliderIndex - 1 + sliderImages.length) % sliderImages.length);
+      resetSliderTimer();
+    }
+    function sliderNext() {
+      showSlider((sliderIndex + 1) % sliderImages.length);
+      resetSliderTimer();
+    }
+    function resetSliderTimer() {
+      if (sliderTimer) clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => sliderNext(), 4000);
+    }
+    function setupSliderDots() {
+      sliderDotsContainer.innerHTML = '';
+      sliderImages.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => { showSlider(i); resetSliderTimer(); };
+        sliderDotsContainer.appendChild(dot);
+      });
+    }
+    // Single initialization: Georgian is default
+    document.addEventListener('DOMContentLoaded', () => {
+      switchLanguage('ge');
+      showPage('home');
+      document.querySelectorAll('nav a, .lang-btn, .catalog-btn, .go-back-btn, .hero-btn, .form-btn').forEach(el => {
+        el.setAttribute('tabindex', '0');
+      });
+      setupSliderDots();
+      resetSliderTimer();
+    });
+    function switchLanguage(lang) {
+      currentLang = lang;
+      document.body.className = lang === 'ge' ? 'georgian' : '';
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-ge').classList.toggle('active', lang === 'ge');
+      document.getElementById('lang-en').setAttribute('aria-pressed', lang === 'en');
+      document.getElementById('lang-ge').setAttribute('aria-pressed', lang === 'ge');
+      // Update all translatable elements
+      document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        const translatedText = translations[lang][key] || translations['en'][key] || el.textContent;
+        // Handle line breaks for ADR title
+        if (key === 'adr_title') {
+          el.innerHTML = translatedText.replace(/\n/g, '<br>');
+        } else {
+          el.textContent = translatedText;
+        }
+      });
+      // Team bubble
+      document.getElementById('team-bubble-text').textContent = translations[lang]['team_bubble'] || translations['en']['team_bubble'];
+      // Footer copyright
+      document.getElementById('footer-copyright').textContent = translations[lang]['footer_copyright'] || translations['en']['footer_copyright'];
+      // Catalog alphabet
+      if (document.getElementById('catalog').style.display !== 'none') setupCatalogAlphabet();
+    }
+    function showPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+      if (document.getElementById(pageId)) {
+        document.getElementById(pageId).classList.remove('hidden');
+      }
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(a => {
+        if (a.getAttribute('onclick') === `showPage('${pageId}')`) a.classList.add('active');
+      });
+      if (pageId === 'catalog') setupCatalogAlphabet();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function setupCatalogAlphabet() {
+      const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      const alphaDiv = document.getElementById('catalog-alpha');
+      const sectionDiv = document.getElementById('catalog-section');
+      alphaDiv.innerHTML = '';
+      sectionDiv.classList.add('hidden');
+      alpha.forEach(letter => {
+        const btn = document.createElement('button');
+        btn.className = 'catalog-btn';
+        btn.textContent = letter;
+        btn.onclick = () => {
+          sectionDiv.innerHTML = `<button class='go-back-btn' onclick='setupCatalogAlphabet()'>${translations[currentLang]['catalog_go_back'] || translations['en']['catalog_go_back']}</button><div style='margin-top:16px;font-size:1.2rem;font-weight:600;color:var(--rose);'>${letter}</div><div style='margin-top:8px;color:#444;'>No items for this letter.</div>`;
+          alphaDiv.innerHTML = '';
+          sectionDiv.classList.remove('hidden');
+        };
+        alphaDiv.appendChild(btn);
+      });
+    }
+  </script>
+</html>
